@@ -12,3 +12,10 @@
 # API :
 1. Spotify API
 2. unsplash API
+
+# Credit:
+1. Duc Tran
+2. Dimas Leal
+3. Andres Rodriguez
+4. Joaquin Barberis
+5. Qwentin Dobbs 
