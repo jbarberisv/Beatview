@@ -1,4 +1,4 @@
-# Project name : Beatview
+# Project name : MAIMUSIC
 
 # User Story:
 - As a music enthusiast, I want to have a visually stunning experience while listening to music on Beatview, so that I can enjoy my favorite songs in a new and exciting way.
