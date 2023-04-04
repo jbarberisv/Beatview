@@ -1,17 +1,26 @@
 body {
-    display: flex;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 100%;
     margin: 2%;
-    background-image: url(https://cutewallpaper.org/21/8-bit-gif-background/8-bit-background-gif-2-%C5%A5-GIF-Images-Download.gif);
+    background-image: url(/assets/Images/Main_Page.gif);
     background-repeat: no-repeat;
     background-size: cover;
+    color: white;
+
+}
+
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: 800;
 
 }
 
 header {
     padding: 20px;
     text-align: center;
+    font-weight: 1000;
+    font-size: 60px;
 }
 
 nav {
@@ -32,6 +41,7 @@ form {
 
 input {
     border-style:  2px solid darkblue;
+    border-radius: 12px;
 
 }
 
@@ -39,8 +49,12 @@ input[type=text] {
     width: 100%;
     padding: 12px 200px;
     margin: 8px 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
   }
 
 input[placeholder] {
     text-align: center;
+    background-color: rgb(172, 158, 248);
+    color: lightgrey;
 }
