@@ -8,19 +8,38 @@ body {
 
 }
 
-main {
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
+header {
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    text-align: right;
+    padding: 0 80px 10px 40px;
 
 }
 
-.bar {
-    justify-content: center;
+a {
+    padding-left: 40px;
 }
 
-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
+form {
+    text-align: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+input {
+    border-style:  2px solid;
+
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 200px;
+    margin: 8px 0;
+  }
+
+input[placeholder] {
+    text-align: center;
 }
