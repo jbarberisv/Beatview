@@ -1,17 +1,17 @@
 # Project name : MAIMUSIC
 
 # User Story:
-- As a music enthusiast, I want to have a visually stunning experience while listening to music on Beatview, so that I can enjoy my favorite songs in a new and exciting way.
 
-- When I navigate to Beatview, I am presented with a visually engaging homepage that includes a beautiful background photo that matches the genre or style of the currently playing song or playlist on Spotify.
+- As a music enthusiast, I want to visit a website where I can put in my mood and get a playlist that matches my mood
 
-- As I listen to my favorite songs or playlists on Spotify, I can see the background photo change dynamically to reflect the mood and style of each song or playlist.
+- When I access MaiMusic I am presented with a prompt to type in my mood
 
-- By using Beatview, I can enjoy my favorite music in a new and exciting way, discovering beautiful photos that match the mood and style of each song or playlist. The dynamic background photo feature creates a visually immersive experience that makes listening to music even more enjoyable.
+- After putting in my mood, I am presented with a playlist with songs that match my mood
+
 
 # API :
-1. Spotify API
-2. unsplash API
+1. ChatGPT API
+2. Spotify API
 
 # Credit:
 1. Duc Tran
