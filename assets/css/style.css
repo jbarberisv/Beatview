@@ -1,0 +1,26 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    width: 100%;
+    margin: 2%;
+    background-image: url(https://cutewallpaper.org/21/8-bit-gif-background/8-bit-background-gif-2-%C5%A5-GIF-Images-Download.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+main {
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.bar {
+    justify-content: center;
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
