@@ -1,6 +1,47 @@
-var apiKey = "<key>";
-var prompt = "create a music playlist for happy mood";
+var apiKey = "sk-";
+var mood;
+var prompt;
 
+var playListIfNoPrivateKey = {
+    "playlist_name": "Heavy Metal Mood",
+    "tracks": [
+      {
+        "artist": "Metallica",
+        "title": "Master of Puppets",
+        "duration": "8:36"
+      },
+      {
+        "artist": "Slayer",
+        "title": "Raining Blood",
+        "duration": "4:12"
+      },
+      {
+        "artist": "Pantera",
+        "title": "Cowboys from Hell",
+        "duration": "4:07"
+      },
+      {
+        "artist": "Black Sabbath",
+        "title": "Paranoid",
+        "duration": "2:47"
+      }
+      ]
+    }
+
+var elChatResponse = document.querySelector("#chatResponse");
+
+//Grab Users input
+function formHandler(event) {
+    event.preventDefault();
+    mood = event.target.elements.mood.value;
+    generatePrompt(mood);
+}
+//Generate prompt to fetch function
+function generatePrompt(mood) {
+    prompt = "create a music playlist for" + mood + "mood. And return it in a json format";
+    getMoodResponse(prompt);
+}
+//Fetch to API
 function getMoodResponse(prompt){
     fetch("https://api.openai.com/v1/chat/completions", {
         method: "POST",
@@ -15,13 +56,30 @@ function getMoodResponse(prompt){
       })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data.choices[0].message.content);
-        console.log(data);
+        var elResponse = document.createElement("p");
+        elResponse.textContent = data.choices[0].message.content;
+        elChatResponse.appendChild(elResponse);
+
+        // send response to spotify function
+        spotifyPlaylist(data.choices[0].message.content);
       })
       .catch((error) => {
-        console.error(error);
+        return spotifyPlaylist(playListIfNoPrivateKey);
       });
     };
 
 
-getMoodResponse(prompt)
+
+//Recieve playlist JSHON and transform it to a object
+function spotifyPlaylist(playlist) {
+    if (typeof playlist === 'string') {
+        playlist = JSON.parse(playlist); // transform to object
+    }
+    console.log(playlist);
+    //work from this point on
+    // here connect spotify API and use maybe playlist.tracks.foreach(fetch to spotify...);
+}
+
+
+
+document.addEventListener("submit" , formHandler)
