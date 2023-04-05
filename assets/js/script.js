@@ -98,7 +98,7 @@ getMoodResponse(prompt)
   //});
   
   var youtubeApiKey = 'AIzaSyBaNkIGKJkeJ9CFgoMsQ93e7ir3zwSSwqg';
-  const query = 'happy music';
+  const query = 'happy';
   const maxResults = 10;
   const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${query}&part=snippet&maxResults=${maxResults}&type=video&videoCategoryId=10&key=${youtubeApiKey}`
   const numVideos = 6;
