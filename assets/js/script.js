@@ -83,3 +83,17 @@ function spotifyPlaylist(playlist) {
 
 
 document.addEventListener("submit" , formHandler)
+getMoodResponse(prompt)
+
+var apiKey = 'AIzaSyBaNkIGKJkeJ9CFgoMsQ93e7ir3zwSSwqg';
+const query = 'dogs'; // Replace with your search query
+const apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&q=${encodeURIComponent(query)}`;
+
+fetch(apiUrl)
+  .then((response) => response.json())
+  .then((data) => console.log(data))
+  .catch((error) => console.error(error));
+    data.items.forEach((item) => {
+    console.log(item.snippet.title);
+  });
+  
