@@ -85,15 +85,48 @@ function spotifyPlaylist(playlist) {
 document.addEventListener("submit" , formHandler)
 getMoodResponse(prompt)
 
-var apiKey = 'AIzaSyBaNkIGKJkeJ9CFgoMsQ93e7ir3zwSSwqg';
-const query = 'dogs'; // Replace with your search query
-const apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&q=${encodeURIComponent(query)}`;
+//var apiKey = 'AIzaSyBaNkIGKJkeJ9CFgoMsQ93e7ir3zwSSwqg';
+//const query = 'dogs'; // Replace with your search query
+//const apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&q=${encodeURIComponent(query)}`;
 
-fetch(apiUrl)
-  .then((response) => response.json())
-  .then((data) => console.log(data))
-  .catch((error) => console.error(error));
-    data.items.forEach((item) => {
-    console.log(item.snippet.title);
-  });
+//fetch(apiUrl)
+  //.then((response) => response.json())
+  //.then((data) => console.log(data))
+  //.catch((error) => console.error(error));
+   // data.items.forEach((item) => {
+    //console.log(item.snippet.title);
+  //});
   
+  var youtubeApiKey = 'AIzaSyBaNkIGKJkeJ9CFgoMsQ93e7ir3zwSSwqg';
+  const query = 'happy music';
+  const maxResults = 10;
+  const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${query}&part=snippet&maxResults=${maxResults}&type=video&videoCategoryId=10&key=${youtubeApiKey}`
+  const numVideos = 6;
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      const videos = data.items;
+      const randomVideos = [];
+      for (let i = 0; i < numVideos; i++) {
+      const randomIndex = Math.floor(Math.random() * videos.length);
+      const randomVideo = videos[randomIndex];
+      randomVideos.push(randomVideo);
+      videos.splice(randomIndex, 1);
+      }
+      //const songArtistArray = [];
+      randomVideos.forEach(video => {
+      const title = video.snippet.title;
+      const separatorIndex = title.indexOf('-');
+      if (separatorIndex !== -1){
+        const song = title.substring(0, separatorIndex).trim();
+        const artist = title.substring(separatorIndex +1).trim();
+        //songArtistArray.push(`Song: ${song} | Artist: ${artist}`)
+      //videos.forEach(video => {
+        //const title = video.snippet.title;
+        console.log(`Song: ${song}\nArtist: ${artist}\n`);
+
+      }
+      });
+      //console.log(songArtistArray);
+      })
+    .catch(error => console.error(error));
