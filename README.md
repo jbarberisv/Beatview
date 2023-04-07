@@ -11,7 +11,7 @@
 
 # API :
 1. ChatGPT API
-2. Spotify API
+2. Youtube API
 
 # Credit:
 1. Duc Tran
