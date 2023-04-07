@@ -40,7 +40,7 @@ form {
 }
 
 input {
-    border-style:  2px solid darkblue;
+    border:  2px solid white;
     border-radius: 12px;
 
 }
@@ -55,6 +55,15 @@ input[type=text] {
 
 input[placeholder] {
     text-align: center;
-    background-color: rgb(172, 158, 248);
-    color: lightgrey;
+    background-color: rgba(172, 158, 248, 0.671);
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 1.8px;
+    font-weight: bold;
+}
+
+::placeholder {
+    color: white;
+    letter-spacing: 2px;
+    font-weight: bold;
 }
