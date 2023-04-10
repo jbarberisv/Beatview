@@ -67,3 +67,12 @@ input[placeholder] {
     letter-spacing: 2px;
     font-weight: bold;
 }
+
+button {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
