@@ -6,7 +6,7 @@
 
 - When I access MaiMusic I am presented with a prompt to type in my mood
 
-- After putting in my mood, I am presented with a playlist with songs that match my mood
+- After putting in my mood, I am presented with a playlist with songs that match my mood and links to Youtube videos to watch and listen to the songs
 
 
 # API :
