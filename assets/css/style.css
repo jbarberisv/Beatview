@@ -2,25 +2,77 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 100%;
     margin: 2%;
-    background-image: url(https://cutewallpaper.org/21/8-bit-gif-background/8-bit-background-gif-2-%C5%A5-GIF-Images-Download.gif);
+    background-image: url(/assets/Images/Main_Page.gif);
     background-repeat: no-repeat;
     background-size: cover;
+    color: white;
 
 }
 
-main {
-    justify-content: center;
-    display: flex;
-    flex-direction: row;
+a {
+    text-decoration: none;
+    color: white;
+    font-weight: 800;
 
 }
 
-.bar {
-    justify-content: center;
+header {
+    padding: 20px;
+    text-align: center;
+    font-weight: 1000;
+    font-size: 60px;
 }
 
-section {
-    display: flex;
-    flex-direction: row;
-    justify-content: right;
+nav {
+    text-align: right;
+    padding: 0 80px 10px 40px;
+
+}
+
+a {
+    padding-left: 40px;
+}
+
+form {
+    text-align: center;
+    align-items: center;
+    margin-top: 200px;
+}
+
+input {
+    border:  2px solid white;
+    border-radius: 12px;
+
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 200px;
+    margin: 8px 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: white;
+  }
+
+input[placeholder] {
+    text-align: center;
+    background-color: rgba(172, 158, 248, 0.671);
+    color: white;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    letter-spacing: 1.8px;
+    font-weight: bold;
+}
+
+::placeholder {
+    color: white;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }

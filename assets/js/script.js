@@ -1,120 +1,76 @@
-var apiKey = "sk-";
+var openaiApiKey = "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";
 var mood;
 var prompt;
-
-var playListIfNoPrivateKey = {
-    "playlist_name": "Heavy Metal Mood",
-    "tracks": [
-      {
-        "artist": "Metallica",
-        "title": "Master of Puppets",
-        "duration": "8:36"
-      },
-      {
-        "artist": "Slayer",
-        "title": "Raining Blood",
-        "duration": "4:12"
-      },
-      {
-        "artist": "Pantera",
-        "title": "Cowboys from Hell",
-        "duration": "4:07"
-      },
-      {
-        "artist": "Black Sabbath",
-        "title": "Paranoid",
-        "duration": "2:47"
-      }
-      ]
-    }
 
 var elChatResponse = document.querySelector("#chatResponse");
 
 //Grab Users input
 function formHandler(event) {
-    event.preventDefault();
-    mood = event.target.elements.mood.value;
-    generatePrompt(mood);
+  var mood = event.target.value;
+  generatePrompt(mood);
 }
 //Generate prompt to fetch function
 function generatePrompt(mood) {
-    prompt = "create a music playlist for" + mood + "mood. And return it in a json format";
-    getMoodResponse(prompt);
+  prompt =
+    "create a 5 song playlist for " +
+    mood +
+    " mood with only song names in JSON format as song: title";
+  getMoodResponse(prompt);
 }
 //Fetch to API
-function getMoodResponse(prompt){
-    fetch("https://api.openai.com/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${apiKey}`,
-        },
-        body: JSON.stringify({
-          model: 'gpt-3.5-turbo',
-          messages: [{role: 'user', content: `${prompt}`}],
-        })
-      })
+function getMoodResponse(prompt) {
+  fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${openaiApiKey}`,
+    },
+    body: JSON.stringify({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: `${prompt}` }],
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      //Returns data and stores in a Json format
+      var jsonString = data.choices[0].message.content;
+      const playlist = JSON.parse(jsonString);
+      //Stores data for each song in the playlist and stores in a variable and then stored each variable in an array
+      var song1 = playlist.song1;
+      var song2 = playlist.song2;
+      var song3 = playlist.song3;
+      var song4 = playlist.song4;
+      var song5 = playlist.song5;
+      var songs = [song1, song2, song3, song4, song5];
+      //For loop to go through each song in the array based on index
+      ytCall(songs, 0);
+      {
+        for (let i = 1; i < songs.length; i++) {
+          ytCall(songs, i);
+        }
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  //function to pass playlist created by the openai API
+  function ytCall(songs, index) {
+    var youtubeApiKey = "AIzaSyAOigEOwT0k62WXrxsiMq2UtJCTyyKBKiA"
+    const query = songs[index];
+    const maxResults = 1;
+    const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${query}&part=snippet&maxResults=${maxResults}&type=video&videoCategoryId=10&key=${youtubeApiKey}`;
+
+    fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
-        var elResponse = document.createElement("p");
-        elResponse.textContent = data.choices[0].message.content;
-        elChatResponse.appendChild(elResponse);
-
-        // send response to spotify function
-        spotifyPlaylist(data.choices[0].message.content);
-      })
-      .catch((error) => {
-        return spotifyPlaylist(playListIfNoPrivateKey);
+        var title = document.createElement("p");
+        title.textContent = data.items[0].snippet.title;
+        document.body.appendChild(title);
+        var videoId = data.items[0].id.videoId;
+        var videoLink = document.createElement("a");
+        videoLink.href = "https://www.youtube.com/watch?v="+videoId;
+        videoLink.textContent = videoLink.href
+        document.body.appendChild(videoLink);
       });
-    };
-
-
-
-//Recieve playlist JSHON and transform it to a object
-function spotifyPlaylist(playlist) {
-    if (typeof playlist === 'string') {
-        playlist = JSON.parse(playlist); // transform to object
-    }
-    console.log(playlist);
-    //work from this point on
-    // here connect spotify API and use maybe playlist.tracks.foreach(fetch to spotify...);
+  }
 }
-
-
-
-document.addEventListener("submit" , formHandler)
-getMoodResponse(prompt)
-
-var youtubeApiKey = 'AIzaSyBaNkIGKJkeJ9CFgoMsQ93e7ir3zwSSwqg';
-const query = 'happy';
-const maxResults = 10;
-const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${query}&part=snippet&maxResults=${maxResults}&type=video&videoCategoryId=10&key=${youtubeApiKey}`
-const numVideos = 6;
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    const videos = data.items;
-    const randomVideos = [];
-    for (let i = 0; i < numVideos; i++) {
-    const randomIndex = Math.floor(Math.random() * videos.length);
-    const randomVideo = videos[randomIndex];
-    randomVideos.push(randomVideo);
-    videos.splice(randomIndex, 1);
-    }
-    //const songArtistArray = [];
-    randomVideos.forEach(video => {
-    const title = video.snippet.title;
-    const separatorIndex = title.indexOf('-');
-    if (separatorIndex !== -1){
-      const song = title.substring(0, separatorIndex).trim();
-      const artist = title.substring(separatorIndex +1).trim();
-      //songArtistArray.push(`Song: ${song} | Artist: ${artist}`)
-    //videos.forEach(video => {
-      //const title = video.snippet.title;
-      console.log(`Song: ${song}\nArtist: ${artist}\n`);
-
-    }
-    });
-    //console.log(songArtistArray);
-    })
-  .catch(error => console.error(error));
