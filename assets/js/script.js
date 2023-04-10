@@ -74,8 +74,3 @@ function getMoodResponse(prompt) {
       });
   }
 }
-//listens for input on page and runs the formHandler function
-submit.addEventListener("click", function(event) {
-  event.preventDefault();
-  formHandler(event);
-});
