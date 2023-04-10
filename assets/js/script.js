@@ -1,4 +1,4 @@
-var openaiApiKey = "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";
+var openaiApiKey = "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";
 var mood;
 var prompt;
 
