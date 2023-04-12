@@ -13,7 +13,13 @@
 
 - After putting in my mood, I am presented with a playlist with songs that match my mood and links to Youtube videos to watch and listen to the songs
 
-![alt screenshot]()
+# Usage:
+1. open the website : https://jbarberisv.github.io/Beatview/
+2. type in your mood or how you feel in this box:
+![website comment box]()
+1. It will show 5 songs with Youtube link.
+2. click on the Youtube link and enjoy.
+
 
 # API :
 1. ChatGPT API
