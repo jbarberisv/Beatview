@@ -1,3 +1,8 @@
+
+![alt text](https://img.shields.io/badge/License-GPLv2-brightgreen)
+![alt text](https://img.shields.io/badge/Ver.-1.0.0-blue)
+
+
 # Project name : MAIMUSIC
 
 # User Story:
@@ -8,6 +13,7 @@
 
 - After putting in my mood, I am presented with a playlist with songs that match my mood and links to Youtube videos to watch and listen to the songs
 
+![alt screenshot]()
 
 # API :
 1. ChatGPT API

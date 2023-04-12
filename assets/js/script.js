@@ -1,4 +1,4 @@
-var openaiApiKey = "yk";
+var openaiApiKey = "sk";
 var mood;
 var prompt;
 
@@ -6,7 +6,8 @@ var elChatResponse = document.querySelector("#chatResponse");
 
 //Grab Users input
 function formHandler(event) {
-  var mood = event.target.value;
+  event.preventDefault();
+  mood = event.target.elements.mood.value;
   generatePrompt(mood);
 }
 //Generate prompt to fetch function
@@ -35,6 +36,7 @@ function getMoodResponse(prompt) {
       //Returns data and stores in a Json format
       var jsonString = data.choices[0].message.content;
       const playlist = JSON.parse(jsonString);
+      console.log(playlist)
       //Stores data for each song in the playlist and stores in a variable and then stored each variable in an array
       var song1 = playlist.song1;
       var song2 = playlist.song2;
@@ -55,7 +57,7 @@ function getMoodResponse(prompt) {
     });
   //function to pass playlist created by the openai API
   function ytCall(songs, index) {
-    var youtubeApiKey = "AIzaSyAOigEOwT0k62WXrxsiMq2UtJCTyyKBKiA"
+    var youtubeApiKey = "AI"
     const query = songs[index];
     const maxResults = 1;
     const apiUrl = `https://www.googleapis.com/youtube/v3/search?q=${query}&part=snippet&maxResults=${maxResults}&type=video&videoCategoryId=10&key=${youtubeApiKey}`;
@@ -63,6 +65,7 @@ function getMoodResponse(prompt) {
     fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
+        console.log('YOUTUBE', data);
         var title = document.createElement("p");
         title.textContent = data.items[0].snippet.title;
         document.body.appendChild(title);
@@ -74,3 +77,4 @@ function getMoodResponse(prompt) {
       });
   }
 }
+document.addEventListener("submit" , formHandler)

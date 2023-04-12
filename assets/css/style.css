@@ -2,7 +2,7 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width: 100%;
     margin: 2%;
-    background-image: url(/assets/Images/Main_Page.gif);
+    background-image: url(../Images/Main_Page.gif);
     background-repeat: no-repeat;
     background-size: cover;
     color: white;
